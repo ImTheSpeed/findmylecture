@@ -2,42 +2,17 @@ function findLocation() {
   const code = document.getElementById("codeInput").value.trim();
   let result = "";
 
-  // Split the code into parts (using both space and potentially no space as delimiters)
-  const parts = code.split(/ |(?=[A-Z])/);
+  // Split the code into parts based on uppercase letters and spaces
+  const parts = code.split(/(?=[A-Z])/);
 
   // Extract the building letter
-  const buildingLetter = parts[0];
+  const buildingLetter = parts[0][0];
 
   // Initialize variables for floor, room, and lecture hall
   let floor = "";
   let room = "";
   let lectureHall = "";
-
-  // Check if the input contains "LH" and treat it as Lecture Hall
-  for (let i = 0; i < parts.length; i++) {
-    if (parts[i].includes("LH")) {
-      lectureHall = "Lecture Hall"; // Automatically set "Lecture Hall"
-      let lhPart = parts[i].replace("LH", ""); // Remove "LH" to handle the rest
-      if (lhPart.length > 1) {
-        floor = lhPart.substring(0, 1); // Extract floor number
-        room = lhPart.substring(1); // Extract room number
-      }
-    }
-  }
-
-  // If "LH" was not part of the input, continue normal parsing
-  if (!lectureHall && parts[1]) {
-    // If floor and room are combined in second part (e.g., NG23 or N1 H302)
-    if (parts[1].length > 1) {
-      floor = parts[1].substring(0, 1); // Extract floor
-      room = parts[1].substring(1); // Extract room
-    }
-    // If lecture hall and room are given separately (e.g., L1 H302)
-    if (parts.length > 2) {
-      lectureHall = parts[2].substring(0, 2); // Extract lecture hall
-      room = parts[2].substring(2); // Extract room
-    }
-  }
+  let codeWithoutBuilding = code.substring(1); // Code without the first letter (building letter)
 
   // Map the building letter to the building name
   const buildings = {
@@ -58,6 +33,22 @@ function findLocation() {
     'P': 'Computer Sciences and Engineering',
     'Q': 'Science'
   };
+
+  // Check if the input contains "LH" and treat it as Lecture Hall
+  if (codeWithoutBuilding.includes("LH")) {
+    lectureHall = "Lecture Hall"; // Automatically set "Lecture Hall"
+    let lhPart = codeWithoutBuilding.replace("LH", ""); // Remove "LH" to handle the rest
+    floor = lhPart.substring(0, 1); // Extract floor number
+    room = lhPart.substring(1); // Extract room number
+  } else {
+    // If there is no "LH", continue parsing the rest
+    if (codeWithoutBuilding.length >= 2) {
+      floor = codeWithoutBuilding[0]; // First character after building letter is floor
+      room = codeWithoutBuilding.substring(1); // Remaining characters are room number
+    } else {
+      result = "Invalid code, please try again!";
+    }
+  }
 
   // Construct the result string
   if (buildings[buildingLetter]) {
