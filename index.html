@@ -12,6 +12,16 @@
             background-color: #FFFFFF; /* White color for the boxes */
             border: 1px solid #E0E0E0; /* Light gray border to differentiate from the background */
         }
+        .find-lec-button {
+            background-color: #38a169; /* Green color */
+            color: white; /* Text color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            transition: background-color 0.3s, transform 0.2s; /* Transition for hover effect */
+        }
+        .find-lec-button:hover {
+            background-color: #2f855a; /* Darker green on hover */
+            transform: translateY(-2px); /* Lift effect on hover */
+        }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen text-black">
@@ -21,7 +31,7 @@
         </div>
         <div class="flex items-center mb-8">
             <input type="text" id="codeInput" placeholder="Type lecture / lab code here" class="flex-grow p-2 rounded-l-full text-black">
-            <button id="submitButton" class="bg-white text-black p-2 rounded-r-full">Find My Lec.</button>
+            <button id="submitButton" class="find-lec-button p-2 rounded-r-full">Find My Lec.</button>
         </div>
         <div class="custom-white p-8 rounded-lg mb-8 text-center">
             <span id="result"></span>
