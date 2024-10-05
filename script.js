@@ -13,7 +13,7 @@ function findLocation() {
   let room = "";
   let lectureHall = "";
 
-  // Handle cases like "L LH202" (Building + Lecture Hall)
+  // Handle cases like "L LH302" (Building + Lecture Hall + Floor + Room)
   if (parts[1] && parts[1].startsWith('LH')) {
     lectureHall = "Lecture Hall";  // Explicitly set "Lecture Hall"
     if (parts[1].length > 2) {
@@ -30,8 +30,16 @@ function findLocation() {
     }
     // If lecture hall and room are given separately (e.g., L1 H302)
     if (parts.length > 2) {
-      lectureHall = parts[2].substring(0, 2); // Extract lecture hall
-      room = parts[2].substring(2); // Extract room
+      if (parts[2].startsWith('LH')) {
+        lectureHall = "Lecture Hall";
+        if (parts[2].length > 2) {
+          floor = parts[2].substring(2, 3); // Extract floor
+          room = parts[2].substring(3); // Extract room
+        }
+      } else {
+        lectureHall = parts[2].substring(0, 2); // Extract lecture hall
+        room = parts[2].substring(2); // Extract room
+      }
     }
   }
 
