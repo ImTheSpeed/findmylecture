@@ -1,3 +1,5 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,27 +11,29 @@
 <body>
   <!-- Logo at the top -->
   <div class="logo">
-    <img src="your-logo-link-here" alt="Campus Logo">
+    <a href="#">
+      <img src="your-logo-link-here" alt="Campus Logo">
+    </a>
   </div>
 
   <!-- Input box and button -->
   <div class="main-container">
-    <input type="text" id="codeInput" placeholder="Type lecture / lab code here">
-    <button onclick="findLocation()">Find My Lec.</button>
+    <input type="text" id="codeInput" placeholder="Type lecture / lab code here" class="input-field">
+    <button class="btn" onclick="findLocation()">Find My Lec.</button>
     <div class="result-box">
-      <p id="result">[LECTURE / LAB LOCATION APPEARS HERE]</p>
+      <p id="result" class="result-text">[LECTURE / LAB LOCATION APPEARS HERE]</p>
     </div>
   </div>
 
   <!-- Message and Static Map -->
   <div class="map-message">
-    <p>University Interactive Map Soon! So use the static one for now :D.</p>
+    <p class="map-text">University Interactive Map Soon! So use the static one for now :D.</p>
     <p>[PHOTO FOR STATIC MAP HERE]</p>
   </div>
 
   <!-- Footer -->
   <footer>
-    <p>All Rights Reserved for Galala University and me, Yes ME (SPEED) THE CREATOR OF THIS</p>
+    <p class="footer-text">All Rights Reserved for Galala University and me, Yes ME (SPEED) THE CREATOR OF THIS</p>
   </footer>
 
   <!-- Link to JavaScript -->
