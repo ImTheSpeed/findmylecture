@@ -10,12 +10,17 @@ function findLocation() {
     return;
   }
 
-  const buildingLetter = parts[1];
-  const numericPart = parts[2];
+  const buildingLetter = parts[1]; // Building code
+  const numericPart = parts[2]; // Floor and room number
 
   let floor = "";
   let room = "";
-  let lectureHall = "";
+
+  // Handle cases where floor and room are combined
+  if (numericPart.length >= 2) {
+    floor = numericPart[0]; // First digit is the floor
+    room = numericPart.slice(1); // Remaining digits are the room
+  }
 
   // Map the building letter to the building name
   const buildings = {
@@ -37,24 +42,20 @@ function findLocation() {
     'Q': 'Science'
   };
 
-  // Check if the numeric part has enough length to separate floor and room
-  if (numericPart.length >= 2) {
-    floor = numericPart[0]; // First digit is the floor
-    room = numericPart.slice(1); // Remaining digits are the room
-  }
-
   // Construct the result string
   if (buildings[buildingLetter]) {
     result = `${buildings[buildingLetter]}`;
 
+    // Determine floor description
     if (floor === "G") {
       result += `, Ground floor`;
     } else if (floor) {
-      result += `, ${floor}th floor`;
+      const floorSuffix = floor === "1" ? "st" : floor === "2" ? "nd" : floor === "3" ? "rd" : "th";
+      result += `, ${floor}${floorSuffix} floor`;
     }
 
     if (room) {
-      result += `, Room ${room}`;
+      result += `, Room ${room.padStart(2, '0')}`; // Pad room number with leading zero if needed
     }
   } else {
     result = "Invalid code, please try again!";
