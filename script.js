@@ -8,23 +8,31 @@ function findLocation() {
   // Extract the building letter
   const buildingLetter = parts[0];
 
-  // Extract the floor, room and lecture hall 
+  // Initialize variables for floor, room, and lecture hall
   let floor = "";
   let room = "";
   let lectureHall = "";
 
-  // Handle cases where floor and room are combined (e.g., "LH302")
-  if (parts[1].length > 2) {
-    lectureHall = parts[1].substring(0, 2);
-    floor = parts[1].substring(2, 3);
-    room = parts[1].substring(3);
-  } else {
-    // Handle cases where floor and room are separate (e.g., "L1 H302")
+  // Handle cases like "L LH202" (Building + Lecture Hall)
+  if (parts[1] && parts[1].startsWith('LH')) {
+    lectureHall = "Lecture Hall";  // Explicitly set "Lecture Hall"
+    if (parts[1].length > 2) {
+      floor = parts[1].substring(2, 3); // Extract floor number
+      room = parts[1].substring(3); // Extract room number
+    }
+  } 
+  // Handle cases like "NG23" or "L1 H302"
+  else if (parts[1]) {
+    // If floor and room are combined in second part (e.g., NG23 or N1 H302)
+    if (parts[1].length > 1) {
+      floor = parts[1].substring(0, 1); // Extract floor
+      room = parts[1].substring(1); // Extract room
+    }
+    // If lecture hall and room are given separately (e.g., L1 H302)
     if (parts.length > 2) {
-      floor = parts[1];
-      lectureHall = parts[2].substring(0, 2);
-      room = parts[2].substring(2);
-    } 
+      lectureHall = parts[2].substring(0, 2); // Extract lecture hall
+      room = parts[2].substring(2); // Extract room
+    }
   }
 
   // Map the building letter to the building name
@@ -54,14 +62,19 @@ function findLocation() {
       result += `, ${lectureHall}`;
     }
     if (floor) {
-      result += `, ${floor}th floor`;
+      if (floor === "G") {
+        result += `, Ground floor`;
+      } else {
+        result += `, ${floor}th floor`;
+      }
     }
     if (room) {
       result += `, Room ${room}`;
-    } 
+    }
   } else {
     result = "Invalid code, please try again!";
   }
 
+  // Display the result
   document.getElementById("result").innerText = result;
 }
