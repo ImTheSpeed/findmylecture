@@ -37,6 +37,13 @@
             margin-bottom: 2rem; /* Space between subtitle and logo */
             color: #4a5568; /* Slightly darker color for subtitle */
         }
+        .result {
+            font-size: 3rem; /* Large font size for result */
+            font-weight: bold; /* Bold font for emphasis */
+            color: #2c5282; /* Dark blue color for the result text */
+            text-align: center; /* Center the result text */
+            margin-top: 1rem; /* Space above the result text */
+        }
         /* List styles */
         .color-list {
             display: flex;
@@ -65,8 +72,8 @@
             <input type="text" id="codeInput" placeholder="Type lecture / lab code here" class="flex-grow p-2 rounded-l-full text-black">
             <button id="submitButton" class="find-lec-button p-2 rounded-r-full">Find My Lec.</button>
         </div>
-        <div class="custom-white p-8 rounded-lg mb-8 text-center">
-            <span id="result"></span> <!-- This element will display HTML content -->
+        <div class="custom-white p-8 rounded-lg mb-8">
+            <span id="result" class="result"></span> <!-- Result displayed with custom class -->
         </div>
         <div class="text-center mb-8">
             <p>University Interactive Map Soon!, So Use the static one for now :D.</p>
