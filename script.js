@@ -1,5 +1,3 @@
-// script.js
-
 function findLocation() {
   const code = document.getElementById("codeInput").value;
   let result = "";
