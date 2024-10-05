@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  All your lectures and labs are in your pocekt , Just enter the Room code and hit find my lecture and Voala.
+  All your lectures and labs are in your pocket , Just enter the Room code and hit find my lecture and Voala.
 </p>
 
 
