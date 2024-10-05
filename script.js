@@ -1,5 +1,6 @@
 function findLocation() {
-    const code = document.getElementById("codeInput").value.trim();
+    // Get input and convert to uppercase to make it case-insensitive
+    const code = document.getElementById("codeInput").value.trim().toUpperCase();
     let result = "";
 
     // Special cases
@@ -89,5 +90,5 @@ function findLocation() {
     }
 
     // Display the result
-    document.getElementById("result").innerText = result;
+    document.getElementById("result").innerHTML = result;
 }
