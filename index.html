@@ -1,42 +1,40 @@
-<!-- index.html -->
-
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Campus Code Locator</title>
-  <link rel="stylesheet" href="styles.css">
+    <title>Lecture / Lab Locator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #F5F5F5; /* Whitish background */
+            font-family: 'Arial', sans-serif;
+        }
+        .custom-white {
+            background-color: #FFFFFF; /* White color for the boxes */
+            border: 1px solid #E0E0E0; /* Light gray border to differentiate from the background */
+        }
+    </style>
 </head>
-<body>
-  <!-- Logo at the top -->
-  <div class="logo">
-    <a href="#">
-      <img src="your-logo-link-here" alt="Campus Logo">
-    </a>
-  </div>
-
-  <!-- Input box and button -->
-  <div class="main-container">
-    <input type="text" id="codeInput" placeholder="Type lecture / lab code here" class="input-field">
-    <button class="btn" onclick="findLocation()">Find My Lec.</button>
-    <div class="result-box">
-      <p id="result" class="result-text">[LECTURE / LAB LOCATION APPEARS HERE]</p>
+<body class="flex flex-col items-center justify-center min-h-screen text-black">
+    <div class="w-full max-w-2xl p-4">
+        <div class="flex justify-center mb-8">
+            <img src="https://www.egyptianeducation.com/ImageHandler.ashx?Id=14525&SS=ceddd09c14cae84267b064642c315f8b" alt="University Logo" class="h-20">
+        </div>
+        <div class="flex items-center mb-8">
+            <input type="text" placeholder="Type lecture / lab code here" class="flex-grow p-2 rounded-l-full text-black">
+            <button class="bg-white text-black p-2 rounded-r-full">Find My Lec.</button>
+        </div>
+        <div class="custom-white p-8 rounded-lg mb-8 text-center">
+            <span class="text-red-500">[LECTURE / LAB LOCATION APPEARS HERE]</span>
+        </div>
+        <div class="text-center mb-8">
+            <p>University Interactive Map Soon!, So Use the static one for now :D.</p>
+        </div>
+        <div class="custom-white p-8 rounded-lg text-center">
+            <span class="text-red-500">[PHOTO FOR STATIC MAP HERE]</span>
+        </div>
     </div>
-  </div>
-
-  <!-- Message and Static Map -->
-  <div class="map-message">
-    <p class="map-text">University Interactive Map Soon! So use the static one for now :D.</p>
-    <p>[PHOTO FOR STATIC MAP HERE]</p>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <p class="footer-text">All Rights Reserved for Galala University and me, Yes ME (SPEED) THE CREATOR OF THIS</p>
-  </footer>
-
-  <!-- Link to JavaScript -->
-  <script src="script.js"></script>
+    <footer class="text-center mt-8 text-xs">
+        All Rights Reserved for Galala University and me, Yes ME [SPEED] THE CREATOR OF THIS
+    </footer>
 </body>
 </html>
