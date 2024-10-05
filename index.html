@@ -1,5 +1,8 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lecture / Lab Locator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -63,7 +66,7 @@
             <button id="submitButton" class="find-lec-button p-2 rounded-r-full">Find My Lec.</button>
         </div>
         <div class="custom-white p-8 rounded-lg mb-8 text-center">
-            <span id="result"></span> <!-- This element will now display HTML content -->
+            <span id="result"></span> <!-- This element will display HTML content -->
         </div>
         <div class="text-center mb-8">
             <p>University Interactive Map Soon!, So Use the static one for now :D.</p>
@@ -81,7 +84,7 @@
                 <li style="background-color: #4f2c02; color: white;">'A' Applied Health Sciences Technology</li>
                 <li style="background-color: #00ff48;">'B' Physical Therapy</li>
                 <li style="background-color: #ff9c00;">'C' Dentistry</li>
-                <li style="background-color: #c72500; color: white;">'D'Medicine</li>
+                <li style="background-color: #c72500; color: white;">'D' Medicine</li>
                 <li style="background-color: #88c700;">'E' Nursing</li>
                 <li style="background-color: #82b6bb;">'G' Pharmacy</li>
                 <li style="background-color: #540c58; color: white;">'H' Administrative Sciences</li>
@@ -97,9 +100,9 @@
         </div>
     </div>
     <footer class="text-center mt-8 text-xs">
-        All Rights Reserved to Galala University ,me and Ali, Yes ME [SPEED THE CREATOR OF THIS and the great idea from my pal Ali, we made this because we found out that a lot of freshmen can't save every building letter
+        All Rights Reserved to Galala University, me, and Ali. Yes ME [SPEED THE CREATOR OF THIS, and the great idea from my pal Ali, we made this because we found out that a lot of freshmen can't save every building letter.]
     </footer>
-    <script src="script.js"></script>
+    <script src="script.js?v=1.0"></script> <!-- Added versioning for cache handling -->
     <script>
         document.getElementById("submitButton").addEventListener("click", findLocation);
     </script>
