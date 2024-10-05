@@ -20,11 +20,11 @@
             <img src="https://www.egyptianeducation.com/ImageHandler.ashx?Id=14525&SS=ceddd09c14cae84267b064642c315f8b" alt="University Logo" class="h-20">
         </div>
         <div class="flex items-center mb-8">
-            <input type="text" placeholder="Type lecture / lab code here" class="flex-grow p-2 rounded-l-full text-black">
-            <button class="bg-white text-black p-2 rounded-r-full">Find My Lec.</button>
+            <input type="text" id="codeInput" placeholder="Type lecture / lab code here" class="flex-grow p-2 rounded-l-full text-black">
+            <button id="submitButton" class="bg-white text-black p-2 rounded-r-full">Find My Lec.</button>
         </div>
         <div class="custom-white p-8 rounded-lg mb-8 text-center">
-            <span class="text-red-500">[LECTURE / LAB LOCATION APPEARS HERE]</span>
+            <span id="result"></span>
         </div>
         <div class="text-center mb-8">
             <p>University Interactive Map Soon!, So Use the static one for now :D.</p>
@@ -36,5 +36,9 @@
     <footer class="text-center mt-8 text-xs">
         All Rights Reserved for Galala University and me, Yes ME [SPEED] THE CREATOR OF THIS
     </footer>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById("submitButton").addEventListener("click", findLocation);
+    </script>
 </body>
 </html>
