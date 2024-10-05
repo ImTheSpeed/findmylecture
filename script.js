@@ -2,61 +2,72 @@ function findLocation() {
     const code = document.getElementById("codeInput").value.trim();
     let result = "";
 
-    // Check if the code contains "LH"
-    const isLectureHall = code.includes("LH");
-    let buildingLetter = code[0];
+    // Split the code into parts (using both space and potentially no space as delimiters)
+    const parts = code.split(/ |(?=[A-Z])/);
+
+    // Extract the building letter
+    const buildingLetter = parts[0];
+
+    // Initialize variables for floor, room, and lecture hall
     let floor = "";
     let room = "";
+    let lectureHall = "";
 
-    // Handle different lengths based on whether it's a Lecture Hall code or not
-    if (isLectureHall) {
-        // Handle LH case
-        const lhParts = code.split("LH");
-        if (lhParts[0].length === 1 && lhParts[1].length > 0) {
-            buildingLetter = lhParts[0][0];
-            floor = lhParts[1][0]; // The first character after LH
-            room = lhParts[1].substring(1); // The rest is the room number
-        }
-    } else {
-        // Handle regular cases without LH
-        if (code.length === 4) { // Format: J204
-            floor = code[1];
-            room = code.substring(2);
-        } else if (code.length === 5) { // Format: K LH22
-            floor = code[1];
-            room = code.substring(2);
-        } else if (code.length === 6) { // Format: L LH202
-            floor = code[2]; // 2nd character
-            room = code.substring(3);
+    // Check if the input contains "LH" and treat it as Lecture Hall
+    for (let i = 0; i < parts.length; i++) {
+        if (parts[i].includes("LH")) {
+            lectureHall = "Lecture Hall"; // Automatically set "Lecture Hall"
+            let lhPart = parts[i].replace("LH", ""); // Remove "LH" to handle the rest
+            if (lhPart.length > 1) {
+                floor = lhPart.substring(0, 1); // Extract floor number
+                room = lhPart.substring(1); // Extract room number
+            }
         }
     }
 
-    // Map the building letter to the building name
+    // If "LH" was not part of the input, continue normal parsing
+    if (!lectureHall && parts[1]) {
+        // If floor and room are combined in second part (e.g., NG23 or N1 H302)
+        if (parts[1].length > 1) {
+            floor = parts[1].substring(0, 1); // Extract floor
+            room = parts[1].substring(1); // Extract room
+        }
+        // If lecture hall and room are given separately (e.g., L1 H302)
+        if (parts.length > 2) {
+            lectureHall = parts[2].substring(0, 2); // Extract lecture hall
+            room = parts[2].substring(2); // Extract room
+        }
+    }
+
+    // Map the building letter to the building name and color
     const buildings = {
-        'M': 'Administrative building',
-        'A': 'Applied Health Sciences Technology',
-        'B': 'Physical Therapy',
-        'C': 'Dentistry',
-        'D': 'Medicine',
-        'E': 'Nursing',
-        'G': 'Pharmacy',
-        'H': 'Administrative Sciences',
-        'I': 'Social and Human Sciences',
-        'J': 'Media Production',
-        'K': 'Food Industries',
-        'L': 'Art and Design',
-        'N': 'Engineering',
-        'O': 'Architecture',
-        'P': 'Computer Sciences and Engineering',
-        'Q': 'Science'
+        'M': { name: 'Administrative building', color: '#000000' },
+        'A': { name: 'Applied Health Sciences Technology', color: '#4f2c02' },
+        'B': { name: 'Physical Therapy', color: '#00ff48' },
+        'C': { name: 'Dentistry', color: '#ff9c00' },
+        'D': { name: 'Medicine', color: '#c72500' },
+        'E': { name: 'Nursing', color: '#88c700' },
+        'G': { name: 'Pharmacy', color: '#82b6bb' },
+        'H': { name: 'Administrative Sciences', color: '#540c58' },
+        'I': { name: 'Social and Human Sciences', color: '#000000' }, // No color provided
+        'J': { name: 'Media Production', color: '#0030ff' },
+        'K': { name: 'Food Industries', color: '#000000' }, // No color provided
+        'L': { name: 'Art and Design', color: '#4e00ff' },
+        'N': { name: 'Engineering', color: '#f0ff00' },
+        'O': { name: 'Architecture', color: '#000000' }, // No color provided
+        'P': { name: 'Computer Sciences and Engineering', color: '#0030ff' },
+        'Q': { name: 'Science', color: '#ff00cc' }
     };
 
     // Construct the result string
     if (buildings[buildingLetter]) {
-        result = `${buildings[buildingLetter]}`;
-        if (isLectureHall) {
-            result += `, Lecture Hall`;
+        const buildingInfo = buildings[buildingLetter];
+        result += `<span style="color:${buildingInfo.color};">${buildingInfo.name}</span>`;
+        
+        if (lectureHall) {
+            result += `, ${lectureHall}`;
         }
+        
         if (floor) {
             if (floor === "G") {
                 result += `, Ground floor`;
@@ -64,6 +75,7 @@ function findLocation() {
                 result += `, ${floor}th floor`;
             }
         }
+        
         if (room) {
             result += `, Room ${room}`;
         }
@@ -72,5 +84,5 @@ function findLocation() {
     }
 
     // Display the result
-    document.getElementById("result").innerText = result;
+    document.getElementById("result").innerHTML = result;
 }
