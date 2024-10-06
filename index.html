@@ -8,45 +8,45 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            background-color: #F5F5F5; /* Whitish background */
+            background-color: #F5F5F5; 
             font-family: 'Arial', sans-serif;
         }
         .custom-white {
-            background-color: #FFFFFF; /* White color for the boxes */
-            border: 1px solid #E0E0E0; /* Light gray border to differentiate from the background */
+            background-color: #FFFFFF; 
+            border: 1px solid #E0E0E0; 
         }
         .find-lec-button {
-            background-color: #38a169; /* Green color */
-            color: white; /* Text color */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-            transition: background-color 0.3s, transform 0.2s; /* Transition for hover effect */
+            background-color: #38a169; 
+            color: white; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+            transition: background-color 0.3s, transform 0.2s; 
         }
         .find-lec-button:hover {
-            background-color: #2f855a; /* Darker green on hover */
-            transform: translateY(-2px); /* Lift effect on hover */
+            background-color: #2f855a; 
+            transform: translateY(-2px); 
         }
         .title {
-            font-size: 2.5rem; /* Large font size for the main title */
-            font-weight: bold; /* Bold font for emphasis */
-            text-align: center; /* Center the text */
-            margin-bottom: 0.5rem; /* Space between title and subtitle */
+            font-size: 2.5rem; 
+            font-weight: bold; 
+            text-align: center; 
+            margin-bottom: 0.5rem; 
         }
         .subtitle {
-            font-size: 1rem; /* Regular font size for the subtitle */
-            text-align: center; /* Center the text */
-            margin-bottom: 2rem; /* Space between subtitle and logo */
-            color: #4a5568; /* Slightly darker color for subtitle */
+            font-size: 1rem; 
+            text-align: center; 
+            margin-bottom: 2rem; 
+            color: #4a5568; 
         }
         .result {
-            font-size: 1.25rem; /* Smaller font size for result */
-            font-weight: bold; /* Bold font for emphasis */
-            color: black; /* Black color for the result text */
-            text-align: center; /* Center the result text */
-            margin-top: 1rem; /* Space above the result text */
-            font-family: 'Verdana', sans-serif; /* Change to a bold font like Verdana */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Shadow effect under the text */
+            font-size: 1.25rem; 
+            font-weight: bold; 
+            color: black; 
+            text-align: center; 
+            margin-top: 1rem; 
+            font-family: 'Verdana', sans-serif; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
         }
-        /* List styles */
+
         .color-list {
             display: flex;
             flex-wrap: wrap;
@@ -75,7 +75,7 @@
             <button id="submitButton" class="find-lec-button p-2 rounded-r-full">Find My Lec.</button>
         </div>
         <div class="custom-white p-8 rounded-lg mb-8">
-            <span id="result" class="result"></span> <!-- Result displayed with custom class -->
+            <span id="result" class="result"></span> 
         </div>
         <div class="text-center mb-8">
             <p>University Interactive Map Soon!, So Use the static one for now :D.</p>
@@ -86,7 +86,7 @@
             </a>
         </div>
 
-        <!-- Colored List Section -->
+
         <div class="text-center mt-8">
             <h2 class="font-bold text-lg">Building Colors</h2>
             <ul class="color-list">
@@ -111,7 +111,7 @@
     <footer class="text-center mt-8 text-xs">
         All Rights Reserved to Galala University, me, and Ali. Yes ME [SPEED THE CREATOR OF THIS, and the great idea from my pal Ali, we made this because we found out that a lot of freshmen can't save every building letter.]
     </footer>
-    <script src="script.js?v=1.0"></script> <!-- Added versioning for cache handling -->
+    <script src="script.js?v=1.0"></script> 
     <script>
         document.getElementById("submitButton").addEventListener("click", findLocation);
     </script>
