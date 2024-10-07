@@ -1,8 +1,8 @@
 function findLocation() {
 
-    const code = document.getElementById("codeInput").value.trim().toUpperCase();
+    let code = document.getElementById("codeInput").value.trim().toUpperCase();
+    code = code.replace(/\s+/g, '');  // Remove any spaces
     let result = "";
-
 
     const specialCases = {
         'HLH001': 'Auditorium 1',
@@ -15,27 +15,30 @@ function findLocation() {
         'GLH001': 'Pharmacy Lecture Hall Ground Floor Room 001'
     };
 
-
     if (specialCases[code]) {
         result = specialCases[code];
     } else {
-
         const isLectureHall = code.includes("LH");
+        const isClassRoom = code.includes("CR");
         let buildingLetter = code[0];
         let floor = "";
         let room = "";
 
-
         if (isLectureHall) {
-
             const lhParts = code.split("LH");
             if (lhParts[0].length === 1 && lhParts[1].length > 0) {
                 buildingLetter = lhParts[0][0];
                 floor = lhParts[1][0]; 
                 room = lhParts[1].substring(1); 
             }
+        } else if (isClassRoom) {
+            const crParts = code.split("CR");
+            if (crParts[0].length === 1 && crParts[1].length > 0) {
+                buildingLetter = crParts[0][0];
+                floor = crParts[1][0]; 
+                room = crParts[1].substring(1);
+            }
         } else {
-
             if (code.length === 4) { 
                 floor = code[1];
                 room = code.substring(2);
@@ -47,7 +50,6 @@ function findLocation() {
                 room = code.substring(3);
             }
         }
-
 
         const buildings = {
             'M': 'Administrative building',
@@ -68,11 +70,12 @@ function findLocation() {
             'Q': 'Science'
         };
 
-
         if (buildings[buildingLetter]) {
             result = `${buildings[buildingLetter]}`;
             if (isLectureHall) {
                 result += `, Lecture Hall`;
+            } else if (isClassRoom) {
+                result += `, Class Room`;
             }
             if (floor) {
                 if (floor === "G") {
