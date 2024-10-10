@@ -1,7 +1,7 @@
 function findLocation() {
 
     let code = document.getElementById("codeInput").value.trim().toUpperCase();
-    code = code.replace(/\s+/g, '');  // Remove any spaces
+    code = code.replace(/\s+/g, '');  
     let result = "";
 
     const specialCases = {
