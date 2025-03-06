@@ -30,14 +30,10 @@ Note! ' This project is still in Alpha Stage , There is big window for error her
 A few of the things you can do with Lecture Locator:
 
 * Check your lecture with only room code
-* Use simple yet colored Galala Map for easier locating 
+* Use simple yet colored Galala Map for easier locating , Visit https://gurealm.netlify.app/
 
 <p align="center">
-  <img src = "https://i.imgur.com/Lx9sWcn.png" width=700>
-</p>
-
-<p align="center">
-  <img src = "https://i.imgur.com/RfEO67o.png" width=700>
+  <img src = "https://i.imgur.com/yPSVAHV.png" width=700>
 </p>
 
 
